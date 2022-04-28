@@ -45,6 +45,21 @@ export const ContainerLogin = styled.div`
   }
 `;
 
+export const ContainerInput = styled.div`
+  position: relative;
+
+  .name,
+  .password {
+    font-size: ${(props) => (props.isFocus ? "7px" : "9px")};
+    font-weight: bold;
+    position: absolute;
+    transition: 0.1s;
+    top: ${(props) => (props.isFocus ? "5px" : "14px")};
+    left: ${(props) => (props.isFocus ? "5px" : "15px")};
+    color: #777272;
+  }
+`;
+
 export const Input = styled.input`
   display: block;
   background: #ededed;
@@ -54,12 +69,19 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-radius: 6px;
-  font-size: 9px;
+  font-size: 12px;
   padding: 10px;
   font-weight: bold;
+  transition: 0.1s;
 
   &:focus {
-    background: red;
+    background: #f9f9f9;
+    border: 2px solid #000;
+  }
+
+  &::placeholder {
+    position: absolut;
+    top: 0;
   }
 `;
 export const CheckBox = styled.input.attrs({ type: "checkbox" })`
@@ -78,11 +100,17 @@ export const Button = styled.button`
   width: 50px;
   height: 50px;
   align-items: center;
-  background: ${(props) => (props.isActive ? "red" : "#f9f9f9")};
+  background: ${(props) => (props.isActive ? "#cd4440" : "#f9f9f9")};
   justify-content: center;
   outline: none;
   border: ${(props) => (props.isActive ? "none" : "1px solid #b5b2b2")};
   border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2;
+
+  :hover {
+    background: ${(props) => (props.isActive ? "#ac2622" : "")};
+  }
 
   svg {
     font-size: 22px;

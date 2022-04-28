@@ -8,7 +8,7 @@ export const themeAuthButtons = [
     name: "Facebook",
     icon: <RiFacebookCircleLine />,
     color: "#fff",
-    backgroundColor: "#4867AA",
+    backgroundColor: "#1579F6",
   },
   {
     id: 2,

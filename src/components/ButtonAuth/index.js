@@ -1,7 +1,6 @@
 import * as C from "./styles";
 
 export function ButtonAuth({ children, ...props }) {
-  console.log(props);
   return (
     <C.Container
       name={props.name}
