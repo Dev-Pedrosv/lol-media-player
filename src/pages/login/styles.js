@@ -58,6 +58,13 @@ export const ContainerInput = styled.div`
     left: ${(props) => (props.isFocus ? "5px" : "15px")};
     color: #777272;
   }
+
+  svg {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+  }
 `;
 
 export const Input = styled.input`
@@ -69,8 +76,8 @@ export const Input = styled.input`
   outline: none;
   border: none;
   border-radius: 6px;
-  font-size: 12px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 5px;
   font-weight: bold;
   transition: 0.1s;
 
@@ -105,11 +112,15 @@ export const Button = styled.button`
   outline: none;
   border: ${(props) => (props.isActive ? "none" : "1px solid #b5b2b2")};
   border-radius: 12px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isActive ? "pointer" : "")};
   transition: 0.2;
 
   :hover {
     background: ${(props) => (props.isActive ? "#ac2622" : "")};
+  }
+
+  :active {
+    opacity: 0.7;
   }
 
   svg {
