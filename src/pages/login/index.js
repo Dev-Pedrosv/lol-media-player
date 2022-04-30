@@ -52,9 +52,7 @@ export function Login() {
       draggable: true,
       progress: undefined,
     });
-    setTimeout(function () {
-      navigate("/music-player");
-    }, 1000);
+    navigate("/music-player");
   };
 
   return (
@@ -113,8 +111,11 @@ export function Login() {
           <label>Manter login</label>
         </div>
 
-        <C.Button isActive={nameInput && passwordInput !== ""}>
-          <AiOutlineArrowRight onClick={() => login(nameInput)} />
+        <C.Button
+          onClick={() => login(nameInput)}
+          isActive={nameInput && passwordInput !== ""}
+        >
+          <AiOutlineArrowRight />
         </C.Button>
         <C.Info>NÃO CONSEGUE INICIAR SESSÃO?</C.Info>
         <C.ContainerInfo>
