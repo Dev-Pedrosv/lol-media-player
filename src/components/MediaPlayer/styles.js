@@ -17,6 +17,7 @@ export const ContainerNameMusic = styled.div`
   max-width: 200px;
 
   .music {
+    width: 500px;
     font-weight: 500;
     font-size: 18px;
     line-height: 28px;
@@ -25,6 +26,7 @@ export const ContainerNameMusic = styled.div`
   }
 
   .description {
+    width: 500px;
     font-weight: 500;
     font-size: 12px;
     line-height: 21px;
@@ -40,11 +42,16 @@ export const ContainerControls = styled.div`
   align-items: center;
   gap: 20px;
   justify-content: space-between;
-  svg {
+
+  .disabled {
+    color: transparent;
+    font-size: 26px;
+  }
+
+  .active {
     color: #4ac08f;
     font-size: 26px;
     cursor: pointer;
-
     :hover {
       opacity: 0.8;
     }
@@ -53,8 +60,32 @@ export const ContainerControls = styled.div`
       opacity: 0.6;
     }
   }
+
   .control {
     font-size: 32px;
+    color: #4ac08f;
+    cursor: pointer;
+    :hover {
+      opacity: 0.8;
+    }
+
+    :active {
+      opacity: 0.6;
+    }
+  }
+`;
+
+export const Button = styled.button`
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: ${(props) => (props.disabled ? "" : "pointer")};
+  :hover {
+    opacity: ${(props) => (props.disabled ? "" : 0.8)};
+  }
+
+  :active {
+    opacity: ${(props) => (props.disabled ? "" : 0.6)};
   }
 `;
 

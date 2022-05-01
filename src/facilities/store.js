@@ -1,6 +1,7 @@
 export const store = {
   getStorage: (key) => {
-    return JSON.parse(localStorage.getItem(key));
+    const storageItem = localStorage.getItem(key);
+    return storageItem ? JSON.parse(storageItem) : null;
   },
 
   setStorage: (key, value) => {

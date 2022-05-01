@@ -1,6 +1,7 @@
 /* eslint-disable use-isnan */
 import { useState, useRef, useEffect } from "react";
 import * as C from "./styles";
+import { playList } from "./playList";
 
 import {
   AiOutlineLeft,
@@ -11,9 +12,10 @@ import {
 } from "react-icons/ai";
 
 export function MediaPlayer() {
+  const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [play, setPlay] = useState(false);
-
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [widthProgressBar, setWidthProgressBar] = useState(0);
@@ -39,15 +41,16 @@ export function MediaPlayer() {
   };
 
   const togglePlayPause = (type) => {
-    const prevValue = isPlaying;
-    setIsPlaying(!prevValue);
-    if (!prevValue) {
+    setIsPlaying(type);
+    if (type) {
       setPlay(true);
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
+      return;
     } else {
       audioPlayer.current.pause();
       cancelAnimationFrame(animationRef.current);
+      return;
     }
   };
 
@@ -55,6 +58,18 @@ export function MediaPlayer() {
     progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
+    if (
+      audioPlayer.current.currentTime === audioPlayer.current.duration &&
+      index < playList.length - 1
+    ) {
+      continuePlayList();
+    }
+    if (
+      audioPlayer.current.currentTime === audioPlayer.current.duration &&
+      index === playList.length - 1
+    ) {
+      continuePlayList();
+    }
   };
 
   const changeRange = () => {
@@ -67,22 +82,71 @@ export function MediaPlayer() {
     setCurrentTime(progressBar.current.value);
   };
 
-  const handleMusicChange = () => {};
+  const continuePlayList = () => {
+    if (index === playList.length - 1) {
+      setIndex(0);
+      setLoading(true);
+      cancelAnimationFrame(animationRef.current);
+      setTimeout(() => {
+        setLoading(false);
+        audioPlayer.current.play();
+        animationRef.current = requestAnimationFrame(whilePlaying);
+      }, 3000);
+    }
+    if (index < playList.length - 1) {
+      setLoading(true);
+      cancelAnimationFrame(animationRef.current);
+      setIndex(index + 1);
+      setTimeout(() => {
+        setLoading(false);
+        audioPlayer.current.play();
+        animationRef.current = requestAnimationFrame(whilePlaying);
+      }, 3000);
+    }
+  };
+
+  const handleMusic = (type) => {
+    if (type === "previous") {
+      setIndex(index - 1);
+      togglePlayPause();
+    } else {
+      setIndex(index + 1);
+      togglePlayPause();
+    }
+  };
 
   return (
     <C.Container>
       <C.ContainerNameMusic>
-        <p className="music">Warrior</p>
-        <p className="description">RIOT GAMES FT. IMAGINE DRAGONS</p>
+        <p className="music">{playList[index].name}</p>
+        <p className="description">{playList[index].description}</p>
       </C.ContainerNameMusic>
       <C.ContainerControls>
-        <AiOutlineLeft />
+        <C.Button
+          disabled={index === 0}
+          onClick={() => handleMusic("previous")}
+        >
+          <AiOutlineLeft className={index === 0 ? "disabled" : "active"} />
+        </C.Button>
         {isPlaying ? (
-          <AiOutlinePauseCircle className="control" onClick={togglePlayPause} />
+          <AiOutlinePauseCircle
+            className="control active"
+            onClick={() => togglePlayPause(false)}
+          />
         ) : (
-          <AiOutlinePlayCircle className="control" onClick={togglePlayPause} />
+          <AiOutlinePlayCircle
+            className="control active"
+            onClick={() => togglePlayPause(true)}
+          />
         )}
-        <AiOutlineRight />
+        <C.Button
+          disabled={index === playList.length - 1}
+          onClick={() => handleMusic("next")}
+        >
+          <AiOutlineRight
+            className={index === playList.length - 1 ? "disabled" : "active"}
+          />
+        </C.Button>
       </C.ContainerControls>
 
       <C.ContainerMenu widthProgressBar={widthProgressBar}>
@@ -96,7 +160,7 @@ export function MediaPlayer() {
         <audio
           style={{ display: "none" }}
           ref={audioPlayer}
-          src="https://s170.123apps.com/aconv/d/s1709MXzFUZ1_mp3_nzrRHgrq.mp3"
+          src={playList[index].mp3}
           preload="metadata"
           controls
         ></audio>
@@ -112,6 +176,18 @@ export function MediaPlayer() {
             }`}
             </p>
           </div>
+        )}
+        {loading && (
+          <img
+            alt="gif-loading"
+            src="https://developer.riotgames.com/static/img/katarina.55a01cf0560a.gif"
+            style={{
+              position: "absolute",
+              width: "73px",
+              right: "47vw",
+              bottom: "50vh",
+            }}
+          />
         )}
 
         <AiOutlineEllipsis />
