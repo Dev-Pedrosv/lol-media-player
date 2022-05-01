@@ -1,82 +1,87 @@
-import AhriKDA from "../../assets/wallpapers/ahri-kda.jpg";
-import Akali from "../../assets/wallpapers/akali.jpg";
-import Evelin from "../../assets/wallpapers/evelin-kda.jpg";
-import Fiora from "../../assets/wallpapers/fiora.png";
-import PentaKill from "../../assets/wallpapers/pentakill-1.jpg";
-import PentaKill2 from "../../assets/wallpapers/pentakill-2.jpg";
-import Qyana from "../../assets/wallpapers/qyana.jpg";
-import Teemo from "../../assets/wallpapers/teemo.png";
-import TrueDamage from "../../assets/wallpapers/true-damage-1.jpg";
-import Viego from "../../assets/wallpapers/viego.jpg";
-import Yasuo from "../../assets/wallpapers/yasuo.png";
-import Yasuo1 from "../../assets/wallpapers/yasuo-1.png";
-import YasuoTrueDamage from "../../assets/wallpapers/yasuo-true-damage.jpg";
-
 export const wallpapers = [
   {
     id: 1,
-    image: AhriKDA,
-    name: "Ahri-Kda",
+    image:
+      "https://img.uhdpaper.com/wallpaper/arcana-ahri-skin-splash-art-lol-360@1@g-preview.jpg?dl",
+    name: "Ahri",
   },
   {
     id: 2,
-    image: Akali,
-    name: "Akali",
+    image:
+      "https://img.uhdpaper.com/wallpaper/sea-dog-yasuo-skin-splash-art-lol-516@1@g-preview.jpg?dl",
+    name: "Yasup",
   },
   {
     id: 3,
-    image: Evelin,
-    name: "Evelin",
+    image:
+      "https://img.uhdpaper.com/wallpaper/lunar-eclipse-senna-prestige-skin-splash-art-lol-521@1@g-preview.jpg?dl",
+    name: "Senna",
   },
   {
     id: 4,
-    image: Fiora,
-    name: "Fiora",
+    image:
+      "https://img.uhdpaper.com/wallpaper/arcana-hecarim-skin-splash-art-lol-363@1@g-preview.jpg?dl",
+    name: "Hecarim",
   },
   {
     id: 5,
-    image: PentaKill,
-    name: "PentaKill",
+    image:
+      "https://img.uhdpaper.com/wallpaper/ashen-knight-pyke-splash-art-lol-822@1@f-preview.jpg?dl",
+    name: "Ashe",
   },
   {
     id: 6,
-    image: PentaKill2,
-    name: "PentaKill2",
+    image:
+      "https://img.uhdpaper.com/wallpaper/evelynn-spirit-blossom-lol-art-598@1@f-preview.jpg?dl",
+    name: "Evelynn",
   },
   {
     id: 7,
-    image: Qyana,
-    name: "Qyana",
+    image:
+      "https://img.uhdpaper.com/wallpaper/renata-glasc-league-of-legends-612@1@f-preview.jpg?dl",
+    name: "Renata",
   },
   {
     id: 8,
-    image: Teemo,
-    name: "Teemo",
+    image:
+      "https://img.uhdpaper.com/wallpaper/arcane-caitlyn-vi-jinx-lol-art-608@1@f-preview.jpg?dl",
+    name: "Arcane",
   },
   {
     id: 9,
-    image: TrueDamage,
-    name: "TrueDamage",
+    image:
+      "https://img.uhdpaper.com/wallpaper/jinx-arcane-lol-425@1@f-preview.jpg?dl",
+    name: "Jinx",
   },
 
   {
     id: 10,
-    image: Viego,
-    name: "Viego",
+    image:
+      "https://img.uhdpaper.com/wallpaper/yone-lol-art-422@1@f-preview.jpg?dl",
+    name: "Yone",
   },
   {
     id: 11,
-    image: Yasuo,
-    name: "Yasuo",
+    image:
+      "https://img.uhdpaper.com/wallpaper/shockblade-kassadin-skin-splash-art-lol-18@1@h-preview.jpg?dl",
+    name: "Kassadin",
   },
   {
     id: 12,
-    image: Yasuo1,
-    name: "Yasuo1",
+    image:
+      "https://img.uhdpaper.com/wallpaper/akali-spirit-blossom-lol-art-23@1@h-preview.jpg?dl",
+    name: "Akali",
   },
   {
     id: 13,
-    image: YasuoTrueDamage,
-    name: "YasuoTrueDamage",
+    image:
+      "https://img.uhdpaper.com/wallpaper/lol-2022-lunar-new-year-firecracker-teemo-tristana-24@1@h-preview.jpg?dl",
+    name: "Teemo",
+  },
+  {
+    id: 14,
+    image:
+      "https://img.uhdpaper.com/wallpaper/arcana-rakan-xayah-skin-splash-art-lol-362@1@g-preview.jpg?dl",
+    name: "Xayah-Rakan",
   },
 ];

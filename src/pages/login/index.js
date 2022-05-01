@@ -15,6 +15,7 @@ import Wallpaper from "../../assets/wallpaper.jpg";
 import { themeAuthButtons } from "./themeAuthButtons";
 import { store } from "../../facilities/store";
 import * as C from "./styles";
+import dravenAudio from "../../assets/audio/draven-audio.mp3";
 
 export function Login() {
   const [nameFocus, setNameFocus] = useState(true);
@@ -23,6 +24,7 @@ export function Login() {
   const [passwordFocus, setPasswordFocus] = useState(true);
   const [type, setType] = useState("password");
   const navigate = useNavigate();
+  const sound = new Audio(dravenAudio);
 
   const handleFocus = (type) => {
     if (type === "name" && nameInput === "") {
@@ -52,6 +54,8 @@ export function Login() {
       draggable: true,
       progress: undefined,
     });
+    sound.play();
+
     navigate("/music-player");
   };
 

@@ -77,4 +77,61 @@ export const ContainerMenu = styled.div`
       opacity: 0.6;
     }
   }
+
+  .progressBar {
+    width: 100%;
+    height: 8px;
+    position: fixed;
+    bottom: 65px;
+    right: 0px;
+
+    outline: none;
+    appearance: none;
+    background-color: #14061f;
+    border-radius: 10px;
+    transition: 0.2s;
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+    &::before {
+      content: "";
+      height: 8px;
+      width: ${(props) =>
+        props.widthProgressBar ? props.widthProgressBar : ""};
+      background-color: #4ac08f;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      border: none;
+      background: #2ef4cc;
+      filter: blur(2px);
+      cursor: pointer;
+      position: relative;
+      margin: -2px 0px 0px 0px;
+      z-index: 3;
+    }
+
+    &:active::-webkit-slider-thumb {
+      transform: scale(1.2);
+    }
+  }
+
+  .progressTime {
+    display: flex;
+    position: fixed;
+    color: #2ef4cc;
+    right: 460px;
+  }
 `;
