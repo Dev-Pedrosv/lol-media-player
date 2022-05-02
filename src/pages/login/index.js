@@ -44,7 +44,7 @@ export function Login() {
   };
 
   const login = (name) => {
-    store.setStorage("user", name);
+    store.setStorage("user", { name: name });
     toast.success("Login efetuado com sucesso!", {
       position: "top-right",
       autoClose: 1500,

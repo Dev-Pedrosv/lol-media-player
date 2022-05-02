@@ -1,7 +1,7 @@
 /* eslint-disable use-isnan */
 import { useState, useRef, useEffect } from "react";
 import * as C from "./styles";
-import { playList } from "./playList";
+import { playList } from "../../constants/playList";
 
 import {
   AiOutlineLeft,
@@ -11,7 +11,7 @@ import {
   AiOutlinePauseCircle,
 } from "react-icons/ai";
 
-export function MediaPlayer() {
+export function MediaPlayer({ onClick, music }) {
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,6 +22,11 @@ export function MediaPlayer() {
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
+
+  useEffect(() => {
+    setIndex(music);
+    togglePlayPause();
+  }, [music]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -58,17 +63,18 @@ export function MediaPlayer() {
     progressBar.current.value = audioPlayer.current.currentTime;
     changePlayerCurrentTime();
     animationRef.current = requestAnimationFrame(whilePlaying);
+
     if (
       audioPlayer.current.currentTime === audioPlayer.current.duration &&
       index < playList.length - 1
     ) {
-      continuePlayList();
+      handleMusic();
     }
     if (
       audioPlayer.current.currentTime === audioPlayer.current.duration &&
       index === playList.length - 1
     ) {
-      continuePlayList();
+      handleMusic();
     }
   };
 
@@ -82,36 +88,40 @@ export function MediaPlayer() {
     setCurrentTime(progressBar.current.value);
   };
 
-  const continuePlayList = () => {
-    if (index === playList.length - 1) {
-      setIndex(0);
-      setLoading(true);
-      cancelAnimationFrame(animationRef.current);
-      setTimeout(() => {
-        setLoading(false);
-        audioPlayer.current.play();
-        animationRef.current = requestAnimationFrame(whilePlaying);
-      }, 3000);
-    }
-    if (index < playList.length - 1) {
-      setLoading(true);
-      cancelAnimationFrame(animationRef.current);
-      setIndex(index + 1);
-      setTimeout(() => {
-        setLoading(false);
-        audioPlayer.current.play();
-        animationRef.current = requestAnimationFrame(whilePlaying);
-      }, 3000);
-    }
+  const playMusic = () => {
+    cancelAnimationFrame(animationRef.current);
+    setTimeout(() => {
+      setLoading(false);
+      audioPlayer.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
+    }, 3000);
   };
 
   const handleMusic = (type) => {
     if (type === "previous") {
       setIndex(index - 1);
-      togglePlayPause();
-    } else {
+      if (isPlaying) {
+        setLoading(true);
+        playMusic();
+      }
+      return;
+    }
+    if (index === playList.length - 1) {
+      setIndex(0);
+      if (isPlaying) {
+        setLoading(true);
+        playMusic();
+      }
+      return;
+    }
+    if (index < playList.length - 1) {
       setIndex(index + 1);
-      togglePlayPause();
+      if (isPlaying) {
+        setLoading(true);
+        playMusic();
+      }
+
+      return;
     }
   };
 
@@ -121,6 +131,7 @@ export function MediaPlayer() {
         <p className="music">{playList[index].name}</p>
         <p className="description">{playList[index].description}</p>
       </C.ContainerNameMusic>
+
       <C.ContainerControls>
         <C.Button
           disabled={index === 0}
@@ -166,16 +177,22 @@ export function MediaPlayer() {
         ></audio>
 
         {play && (
-          <div className="progressTime">
-            <p>
-              {`${calculateTime(currentTime)} / 
+          <>
+            <div className="progressTime">
+              <p>
+                {`${calculateTime(currentTime)} / 
             ${
               duration && !isNaN(duration)
                 ? calculateTime(duration)
                 : calculateTime(currentTime)
             }`}
+              </p>
+            </div>
+
+            <p className="index">
+              <span>{index + 1}</span> / {playList.length}
             </p>
-          </div>
+          </>
         )}
         {loading && (
           <img
@@ -190,7 +207,7 @@ export function MediaPlayer() {
           />
         )}
 
-        <AiOutlineEllipsis />
+        <AiOutlineEllipsis onClick={onClick} />
       </C.ContainerMenu>
     </C.Container>
   );

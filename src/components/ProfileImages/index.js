@@ -1,6 +1,6 @@
 import * as C from "./styles";
 
-import { profileImages } from "./profile-images";
+import { profileImages } from "../../constants/profile-images";
 export function ProfileImages({ onClickOn }) {
   return (
     <C.Container>

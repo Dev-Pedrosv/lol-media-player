@@ -11,6 +11,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 0px 30px;
   color: #fff;
+  z-index: 1;
 `;
 
 export const ContainerNameMusic = styled.div`
@@ -164,5 +165,12 @@ export const ContainerMenu = styled.div`
     position: fixed;
     color: #2ef4cc;
     right: 460px;
+  }
+
+  .index {
+    color: #2ef4cc;
+    position: absolute;
+    bottom: 24px;
+    right: 400px;
   }
 `;

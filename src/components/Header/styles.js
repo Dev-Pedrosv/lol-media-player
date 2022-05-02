@@ -12,11 +12,11 @@ export const Container = styled.div`
   z-index: 1000;
 
   .logo {
-    width: 200px;
+    width: 300px;
   }
 
   .lib {
-    width: 200px;
+    width: 300px;
     display: flex;
     justify-content: center;
   }
@@ -32,6 +32,7 @@ export const Container = styled.div`
     transition: width 0.2s;
   }
   .info {
+    position: relative;
     transition: color 0.2s;
     position: relative;
     color: #c0c0c0;
@@ -48,13 +49,21 @@ export const Container = styled.div`
 `;
 
 export const ContainerUser = styled.div`
-  width: 200px;
+  width: 300px;
   display: flex;
   align-items: center;
   gap: 32px;
   position: relative;
+  justify-content: flex-end;
   p {
     border: none;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
   }
 
   img {
@@ -91,6 +100,6 @@ export const ContainerUser = styled.div`
     width: 70px;
     height: 70px;
     position: absolute;
-    right: 61px;
+    right: 45px;
   }
 `;

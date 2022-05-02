@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { store } from "../../facilities/store";
 import { useNavigate } from "react-router-dom";
@@ -9,16 +9,23 @@ import { FiLogOut } from "react-icons/fi";
 import MusicLegend from "../../assets/music-legends.png";
 import { ProfileImages } from "../ProfileImages";
 import Borda from "../../assets/borda.png";
-export function Header({ children, isProfile }) {
+export function Header({ children, isProfile, nickName }) {
   const [profile, setProfile] = useState(false);
-  const [imageProfile, setImageProfile] = useState({
-    id: 0,
+  const initialValue = {
     name: "Yasuo",
     image:
       "https://i.pinimg.com/originals/fb/e5/72/fbe572e1faefa97388243a952acfbe93.jpg",
-  });
+  };
+  const [imageProfile, setImageProfile] = useState(initialValue);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const image = store.getStorage("image");
+    if (image) {
+      setImageProfile(image);
+    }
+  }, []);
 
   const logoutClient = () => {
     store.removeStorage("user");
@@ -43,6 +50,7 @@ export function Header({ children, isProfile }) {
   };
 
   const handleImageProfile = (element) => {
+    store.setStorage("image", element);
     setImageProfile(element);
     setProfile(false);
   };
@@ -56,15 +64,17 @@ export function Header({ children, isProfile }) {
       <img className="logo" alt="music-legends" src={MusicLegend} />
 
       <C.ContainerUser>
-        <p className="info">{children}Yasuo</p>
-        <img src={imageProfile.image} alt={imageProfile.name} />
-        <img
-          className="borda"
-          src={Borda}
-          alt="borda-lvl-500"
-          onClick={handleProfile}
-        />
-        <FiLogOut onClick={() => logoutClient()} />
+        <p className="info">{nickName}</p>
+        <div className="profile">
+          <img src={imageProfile.image} alt={imageProfile.name} />
+          <img
+            className="borda"
+            src={Borda}
+            alt="borda-lvl-500"
+            onClick={handleProfile}
+          />
+          <FiLogOut onClick={() => logoutClient()} />
+        </div>
       </C.ContainerUser>
 
       {profile && isProfile && (
