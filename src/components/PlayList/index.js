@@ -1,7 +1,7 @@
 import * as C from "./styles";
 import { playList } from "../../constants/playList";
-
-export function PlayList({ onClick, open }) {
+import { AiOutlineLeft } from "react-icons/ai";
+export function PlayList({ onClick, open, closeList }) {
   return (
     <C.Container className={open ? "open" : ""}>
       {playList.map((element) => (
@@ -19,6 +19,8 @@ export function PlayList({ onClick, open }) {
           </div>
         </>
       ))}
+
+      <AiOutlineLeft className="arrow" onClick={() => closeList()} />
     </C.Container>
   );
 }

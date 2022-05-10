@@ -24,8 +24,10 @@ export function MediaPlayer({ onClick, music }) {
   const animationRef = useRef();
 
   useEffect(() => {
-    setIndex(music);
-    togglePlayPause();
+    if (music) {
+      setIndex(music);
+      togglePlayPause();
+    }
   }, [music]);
 
   useEffect(() => {
@@ -46,11 +48,13 @@ export function MediaPlayer({ onClick, music }) {
   };
 
   const togglePlayPause = (type) => {
-    setIsPlaying(type);
-    if (type) {
+    const isPlay = type;
+    setIsPlaying(isPlay);
+    if (isPlay) {
       setPlay(true);
       audioPlayer.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
+
       return;
     } else {
       audioPlayer.current.pause();
@@ -116,7 +120,10 @@ export function MediaPlayer({ onClick, music }) {
     }
     if (index < playList.length - 1) {
       setIndex(index + 1);
+      console.log(isPlaying);
+
       if (isPlaying) {
+        console.log("aqui");
         setLoading(true);
         playMusic();
       }
@@ -195,15 +202,10 @@ export function MediaPlayer({ onClick, music }) {
           </>
         )}
         {loading && (
-          <img
+          <C.Gif
+            className="gif"
             alt="gif-loading"
             src="https://developer.riotgames.com/static/img/katarina.55a01cf0560a.gif"
-            style={{
-              position: "absolute",
-              width: "73px",
-              right: "47vw",
-              bottom: "50vh",
-            }}
           />
         )}
 

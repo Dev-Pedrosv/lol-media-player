@@ -11,14 +11,30 @@ export const Container = styled.div`
   position: fixed;
   z-index: 1000;
 
+  @media (max-width: 500px){
+      padding: 0px 15px;
+  }
+
   .logo {
     width: 300px;
+    @media (max-width: 1000px){
+      width: 180px;
+  }
+
+  @media (max-width: 500px){
+      width: 120px;
+  }
+    
   }
 
   .lib {
     width: 300px;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1000px){
+    display:none;
+  }
   }
 
   .info:after {

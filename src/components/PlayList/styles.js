@@ -12,6 +12,15 @@ export const Container = styled.div`
   background: #000;
   overflow-y: scroll;
   top: 0;
+  z-index: 999;
+
+  .arrow {
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    font-size: 32px;
+    color: #fff;
+  }
 
   ::-webkit-scrollbar {
     width: 12px;
@@ -34,6 +43,10 @@ export const Container = styled.div`
     transform: scale(0.9);
     opacity: 0.6;
     cursor: pointer;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
 
     &:hover {
       transform: scale(1);

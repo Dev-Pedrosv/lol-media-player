@@ -5,10 +5,18 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   background-color: #f9f9f9;
+
+
+  @media (max-width: 900px){
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Background = styled.img`
   flex: 3;
+  @media (max-width: 900px){
+    width:100%
+  }
 `;
 
 export const ContainerLogin = styled.div`
@@ -37,6 +45,10 @@ export const ContainerLogin = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+    @media (max-width: 900px){
+    width:250px;
+    margin-left:0px;
+  }
 
     label {
       font-size: 12px;

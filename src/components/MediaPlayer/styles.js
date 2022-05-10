@@ -11,11 +11,35 @@ export const Container = styled.div`
   align-items: center;
   padding: 0px 30px;
   color: #fff;
-  z-index: 1;
+  z-index: 99;
+
+  @media (max-width: 1023px) {
+    height: 27vh;
+  }
+
+  @media (max-width: 767px) {
+    height: 53vh;
+    border-radius: 12px 12px 0px 0px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const ContainerNameMusic = styled.div`
   max-width: 200px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+  }
 
   .music {
     width: 500px;
@@ -24,6 +48,11 @@ export const ContainerNameMusic = styled.div`
     line-height: 28px;
     letter-spacing: 0.04em;
     color: #f1f0f0;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .description {
@@ -34,6 +63,17 @@ export const ContainerNameMusic = styled.div`
     text-transform: uppercase;
     color: #c0c0c0;
     opacity: 0.6;
+
+    @media (max-width: 1023px) {
+      width: 250px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+      text-align: center;
+      display: inline;
+    }
   }
 `;
 
@@ -44,15 +84,26 @@ export const ContainerControls = styled.div`
   gap: 20px;
   justify-content: space-between;
 
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
   .disabled {
     color: transparent;
     font-size: 26px;
+    @media (max-width: 767px) {
+      font-size: 60px;
+    }
   }
 
   .active {
     color: #4ac08f;
     font-size: 26px;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      font-size: 60px;
+    }
     :hover {
       opacity: 0.8;
     }
@@ -66,6 +117,9 @@ export const ContainerControls = styled.div`
     font-size: 32px;
     color: #4ac08f;
     cursor: pointer;
+    @media (max-width: 767px) {
+      font-size: 66px;
+    }
     :hover {
       opacity: 0.8;
     }
@@ -90,6 +144,21 @@ export const Button = styled.button`
   }
 `;
 
+export const Gif = styled.img`
+  position: fixed;
+  width: 73px;
+  right: 47vw;
+  bottom: 50vh;
+
+  @media (max-width: 1023px) {
+    right: 44vw;
+  }
+
+  @media (max-width: 767px) {
+    right: 42vw;
+  }
+`;
+
 export const ContainerMenu = styled.div`
   width: 200px;
   display: flex;
@@ -100,6 +169,11 @@ export const ContainerMenu = styled.div`
     color: #4ac08f;
     font-size: 32px;
     cursor: pointer;
+
+    @media (max-width: 767px) {
+      position: fixed;
+      right: 40px;
+    }
 
     :hover {
       opacity: 0.8;
@@ -122,6 +196,14 @@ export const ContainerMenu = styled.div`
     background-color: #14061f;
     border-radius: 10px;
     transition: 0.2s;
+
+    @media (max-width: 1023px) {
+      bottom: 173px;
+    }
+
+    @media (max-width: 767px) {
+      bottom: 340px;
+    }
 
     &::-moz-focus-outer {
       border: 0;
@@ -165,6 +247,13 @@ export const ContainerMenu = styled.div`
     position: fixed;
     color: #2ef4cc;
     right: 460px;
+    @media (max-width: 1023px) {
+      right: 100px;
+    }
+    @media (max-width: 767px) {
+      right: 185px;
+      bottom: 80px;
+    }
   }
 
   .index {
@@ -172,5 +261,16 @@ export const ContainerMenu = styled.div`
     position: absolute;
     bottom: 24px;
     right: 400px;
+
+    @media (max-width: 1023px) {
+      position: fixed;
+      right: 235px;
+      bottom: 78px;
+    }
+
+    @media (max-width: 767px) {
+      right: 225px;
+      bottom: 40px;
+    }
   }
 `;

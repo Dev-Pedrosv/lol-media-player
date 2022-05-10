@@ -17,6 +17,10 @@ export function MusicPlayer() {
     setOpen(false);
   };
 
+  const closeList = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     setUser(store.getStorage("user"));
   }, []);
@@ -26,7 +30,12 @@ export function MusicPlayer() {
       <Header isProfile={true} nickName={user.name} />
       <Wallpapers />
       <MediaPlayer music={music} onClick={() => setOpen(!open)} />
-      {open && <PlayList onClick={(element) => handleMusic(element)} />}
+      {open && (
+        <PlayList
+          onClick={(element) => handleMusic(element)}
+          closeList={() => closeList()}
+        />
+      )}
     </C.Container>
   );
 }
