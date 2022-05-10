@@ -88,7 +88,7 @@ export function MediaPlayer({ onClick, music }) {
   };
 
   const changePlayerCurrentTime = () => {
-    setWidthProgressBar(`${(progressBar.current.value / duration) * 100}%`);
+    progressBar.current.style.setProperty('--before-width', `${(progressBar.current.value / duration) * 100}%`);
     setCurrentTime(progressBar.current.value);
   };
 

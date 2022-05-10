@@ -195,6 +195,8 @@ export const ContainerMenu = styled.div`
   }
 
   .progressBar {
+
+    --before-width: 0px;
     width: 100%;
     height: 8px;
     position: fixed;
@@ -225,8 +227,9 @@ export const ContainerMenu = styled.div`
     &::before {
       content: "";
       height: 8px;
-      width: ${(props) =>
-        props.widthProgressBar ? props.widthProgressBar : ""};
+      /* width: ${(props) =>
+        props.widthProgressBar ? props.widthProgressBar : ""}; */
+      width: var(--before-width);
       background-color: #4ac08f;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
