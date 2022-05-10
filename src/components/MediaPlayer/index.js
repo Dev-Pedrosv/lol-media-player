@@ -18,7 +18,6 @@ export function MediaPlayer({ onClick, music }) {
   const [play, setPlay] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [widthProgressBar, setWidthProgressBar] = useState(0);
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
@@ -28,6 +27,7 @@ export function MediaPlayer({ onClick, music }) {
       setIndex(music);
       togglePlayPause();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [music]);
 
   useEffect(() => {
@@ -167,7 +167,7 @@ export function MediaPlayer({ onClick, music }) {
         </C.Button>
       </C.ContainerControls>
 
-      <C.ContainerMenu widthProgressBar={widthProgressBar}>
+      <C.ContainerMenu>
         <input
           ref={progressBar}
           defaultValue="0"
