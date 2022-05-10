@@ -44,8 +44,14 @@ export const Container = styled.div`
     opacity: 0.6;
     cursor: pointer;
 
+    
+
     @media (max-width: 1023px) {
       width: 100%;
+    }
+
+    @media (max-width: 767px) {
+      padding: 10px;
     }
 
     &:hover {
@@ -73,6 +79,11 @@ export const Container = styled.div`
     img {
       width: 250px;
       border-radius: 12px;
+
+      @media (max-width: 767px) {
+      width: 100px;
+      margin-right: 12px;
+    }
     }
   }
 `;

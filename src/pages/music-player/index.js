@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import * as C from "./styles";
 import { Header } from "../../components/Header";
 import { Wallpapers } from "../../components/Wallpapers";
 import { MediaPlayer } from "../../components/MediaPlayer";
@@ -26,7 +25,7 @@ export function MusicPlayer() {
   }, []);
 
   return (
-    <C.Container>
+    <>
       <Header isProfile={true} nickName={user.name} />
       <Wallpapers />
       <MediaPlayer music={music} onClick={() => setOpen(!open)} />
@@ -36,6 +35,6 @@ export function MusicPlayer() {
           closeList={() => closeList()}
         />
       )}
-    </C.Container>
+    </>
   );
 }

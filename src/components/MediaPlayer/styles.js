@@ -27,6 +27,11 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media (max-width: 480px) {
+    height: 63vh;
+  
+  }
 `;
 
 export const ContainerNameMusic = styled.div`
@@ -157,6 +162,11 @@ export const Gif = styled.img`
   @media (max-width: 767px) {
     right: 42vw;
   }
+
+  @media (max-width: 480px) {
+    bottom: 70vh;
+
+  }
 `;
 
 export const ContainerMenu = styled.div`
@@ -203,6 +213,10 @@ export const ContainerMenu = styled.div`
 
     @media (max-width: 767px) {
       bottom: 340px;
+    }
+
+    @media (max-width: 480px) {
+      bottom: 409px;
     }
 
     &::-moz-focus-outer {
@@ -254,6 +268,10 @@ export const ContainerMenu = styled.div`
       right: 185px;
       bottom: 80px;
     }
+
+    @media (max-width: 767px) {
+      right: 134px;
+    }
   }
 
   .index {
@@ -271,6 +289,9 @@ export const ContainerMenu = styled.div`
     @media (max-width: 767px) {
       right: 225px;
       bottom: 40px;
+    }
+    @media (max-width: 767px) {
+      right: 175px;
     }
   }
 `;
