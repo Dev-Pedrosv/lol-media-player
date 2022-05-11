@@ -1,7 +1,6 @@
 # League of Legends Music Player
-![](image/README/login.png)
-![](image/README/mediaplayer.png)
-![](image/README/playlist.png)
+![](image/README/lol.gif)
+
 > O Projeto é um media player com tema de League of Legends.
 
 Confira a aplicação: https://lol-music-player.netlify.app
