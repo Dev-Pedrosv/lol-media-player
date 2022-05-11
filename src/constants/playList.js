@@ -63,7 +63,7 @@ export const playList = [
   {
     id: 8,
     name: "Legends Never Die",
-    description: " Against The Current",
+    description: "Against The Current",
     mp3: LegendsNeverDie,
     image: "https://i.ytimg.com/vi/r6zIGXun57U/maxresdefault.jpg",
   },
